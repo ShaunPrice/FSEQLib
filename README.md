@@ -52,22 +52,23 @@ Check that you have the correct number of nodes/pixels per strip defined and if 
 
 Finally, you'll also need to tell the [FastLED](http://fastled.io/), [Adafruit Neopixel](https://github.com/adafruit/Adafruit_NeoPixel) or other library which pin you're using and how many LED's/Nodes/Pixels are on that pin. I've used both teh FastLED, Adafruit and sent the data via a second SPI interface to an FPGA. The example uses the FastLED libraries.
 
-**Xlights**
+Xlights
+-------
 When setting up you Xlights use a Null Output. Mine is set up for a 240 pixel string. This equates to 720 channels (3 x 240 = 720).
 
-![Xlights Setup](image/xlights-setup.jpg)
+![Xlights Setup](images/xlights-setup.jpg)
 
 When you've set up your sequece and saved it a file with the extension FSEQ will be saved. Rename this to the 8.3 format if you're not using a filesystem library tha uses long file names (e.g. *this_is_a_long_file_name.fseq* could be renamed to *short.fsq*). The example uses the default FS library with doesn't support lng filenames.
 
-##Getting Help on LED lighting and Xlights##
-
+Getting Help on LED lighting and Xlights
+----------------------------------------
 I recomend:
 
-	- AusChristmas Lighting (https://auschristmaslighting.com/forums/)
-	- Adafruit's The Magic of NeoPixels (https://learn.adafruit.com/adafruit-neopixel-uberguide/the-magic-of-neopixels)
-	- Xlights/Nutcracker Wiki (http://www.nutcracker123.com/wk/index.php?title=Main_Page)
-	- Youtube (https://www.youtube.com)
+1. AusChristmas Lighting (https://auschristmaslighting.com/forums/)
+2. Adafruit's The Magic of NeoPixels (https://learn.adafruit.com/adafruit-neopixel-uberguide/the-magic-of-neopixels)
+3. Xlights/Nutcracker Wiki (http://www.nutcracker123.com/wk/index.php?title=Main_Page)
+4. Youtube (https://www.youtube.com)
 
-##Notes##
-
+Notes
+-----
 If you're a C++ programmer you might have noticed that the library has some compile time directives to see if it's being compiled for Arduino. That's because I also use the library in a Windows command line application for testing that's compiled with Visual Studio. 
