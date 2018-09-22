@@ -1,11 +1,12 @@
-#Xlights FSEQ Header Library#
-
+Xlights FSEQ Header Library
+===========================
 **Name:**	FSEQLib.cpp
 **Author:**	Shaun Price
 **Contact:**	Via Github
 **Copyright:**	Copyright (C) 2018 Shaun Price
 
-##License##
+License
+-------
 *This program is free software: you can redistribute it and/or modify
 it under the terms of the GNU General Public License as published by
 the Free Software Foundation, either version 3 of the License, or
@@ -19,7 +20,8 @@ GNU General Public License for more details.
 You should have received a copy of the GNU General Public License
 along with this program.  If not, see <https://www.gnu.org/licenses/>.*
 
-##Installing##
+Installing
+----------
 To install this library:
 
 install it using the Arduino Library manager ("Sketch" -> "Include Library" -> "Manage Libraries..."), or
@@ -27,7 +29,8 @@ download a zipfile from Github using the "Download ZIP" button and install it us
 clone this git repository into your sketchbook/libraries folder.
 For more info, see https://www.arduino.cc/en/Guide/Libraries
 
-##Using##
+Using
+-----
 You're going to need a couple of things to get started as follows:
 
 1 x ESP32 board. I used the Wemos Lolin32 Lite but Arduino compatible boards will work as long as they are fast enough.
@@ -49,7 +52,7 @@ Check that you have the correct number of nodes/pixels per strip defined and if 
 
 Finally, you'll also need to tell the [FastLED](http://fastled.io/), [Adafruit Neopixel](https://github.com/adafruit/Adafruit_NeoPixel) or other library which pin you're using and how many LED's/Nodes/Pixels are on that pin. I've used both teh FastLED, Adafruit and sent the data via a second SPI interface to an FPGA. The example uses the FastLED libraries.
 
-###Xlights###
+**Xlights**
 When setting up you Xlights use a Null Output. Mine is set up for a 240 pixel string. This equates to 720 channels (3 x 240 = 720).
 
 ![Xlights Setup](image/xlights-setup.jpg)
