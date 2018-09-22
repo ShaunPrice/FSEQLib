@@ -1,24 +1,24 @@
 Xlights FSEQ Header Library
 ===========================
--**Name:**	FSEQLib.cpp
--**Author:**	Shaun Price
--**Contact:**	Via Github
--**Copyright:**	Copyright (C) 2018 Shaun Price
+**Name:**	FSEQLib.cpp
+**Author:**	Shaun Price
+**Contact:**	Via Github
+**Copyright:**	Copyright (C) 2018 Shaun Price
 
 License
 -------
->This program is free software: you can redistribute it and/or modify
->it under the terms of the GNU General Public License as published by
->the Free Software Foundation, either version 3 of the License, or
->(at your option) any later version.
->
->This program is distributed in the hope that it will be useful,
->but WITHOUT ANY WARRANTY; without even the implied warranty of
->MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
->GNU General Public License for more details.
->
->You should have received a copy of the GNU General Public License
->along with this program.  If not, see <https://www.gnu.org/licenses/>.
+This program is free software: you can redistribute it and/or modify
+it under the terms of the GNU General Public License as published by
+the Free Software Foundation, either version 3 of the License, or
+(at your option) any later version.
+
+This program is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+GNU General Public License for more details.
+
+You should have received a copy of the GNU General Public License
+along with this program.  If not, see <https://www.gnu.org/licenses/>.
 
 Installing
 ----------
@@ -33,11 +33,11 @@ Using
 -----
 You're going to need a couple of things to get started as follows:
 
--1 x ESP32 board. I used the Wemos Lolin32 Lite but Arduino compatible boards will work as long as they are fast enough.
--1 x microSD card reader. I've tested is with the [Adafruit MicroSD card breakout board] (https://www.adafruit.com/product/254) and the [Polulu Breakout Board for MicroSD Card](https://www.pololu.com/product/2597).
--1 x microSD card
--1 x LED light strip. The example uses a strip of WS2811/WS2812's but the Xlights FSEQ file jus supplies the colour values and is not specific to any lights.
--1 x FSEQ file. The open source and free [Xlights](https://xlights.org/) program generates these files when it sateves sequences. The standard Arduino file does not support long filenames so you'll need to rename it into the 8.3 format. As an example, I renamed my file from single.fseq to  show.dat.
+1 x ESP32 board. I used the Wemos Lolin32 Lite but Arduino compatible boards will work as long as they are fast enough.
+1 x microSD card reader. I've tested is with the [Adafruit MicroSD card breakout board] (https://www.adafruit.com/product/254) and the [Polulu Breakout Board for MicroSD Card](https://www.pololu.com/product/2597).
+1 x microSD card
+1 x LED light strip. The example uses a strip of WS2811/WS2812's but the Xlights FSEQ file jus supplies the colour values and is not specific to any lights.
+1 x FSEQ file. The open source and free [Xlights](https://xlights.org/) program generates these files when it sateves sequences. The standard Arduino file does not support long filenames so you'll need to rename it into the 8.3 format. As an example, I renamed my file from single.fseq to  show.dat.
 
 Firstly, check that you SPI pin's used to read teh data from the SD card are correct. The SD Card VSPI PINS on the Wemos Lolin32 Lite (ESP32) card are as follows:
 
