@@ -36,7 +36,7 @@ SCLK = 18, MISO = 19, MOSI = 23, SS = 5
 #include <SPI.h>
 #include "FSEQLib.h"
 
-#define DEBUG 1 // 0=OFF, 1=Serial
+#define DEBUG 0 // 0=OFF, 1=Serial
 
 // Serial Debug Info
 #if (DEBUG == 1)
