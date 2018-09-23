@@ -85,7 +85,7 @@ public:
 	// Magic number (PSEQ) for FSEQ files.
 	String magic();
 
-	// Offset of hte lights data from the header file
+	// Offset of the lights data from the header file
 	uint16_t dataOffset();
 	
 	// FSEQ major version

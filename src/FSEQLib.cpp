@@ -45,7 +45,7 @@ String FSEQLib::magic()
 #endif
 }
 
-// Offset of hte lights data from the header file
+// Offset of the lights data from the header file
 uint16_t FSEQLib::dataOffset()
 {
 	return _header.dataOffset;

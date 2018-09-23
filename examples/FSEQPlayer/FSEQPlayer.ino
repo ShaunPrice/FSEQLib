@@ -36,10 +36,10 @@ SCLK = 18, MISO = 19, MOSI = 23, SS = 5
 #include <SPI.h>
 #include "FSEQLib.h"
 
-#define DEBUG 0 // 0=OFF, 1=Serial
+#define DEBUG 1 // 0=OFF, 1=Serial
 
 // Serial Debug Info
-#if (DEBUG == 0)
+#if (DEBUG == 1)
 #define SERIAL_BEGIN(x) Serial.begin(x)
 #define DEBUG_PRINT(x) Serial.print(x)
 #define DEBUG_PRINTLN(x) Serial.println(x)
@@ -140,6 +140,9 @@ void loop()
 				DEBUG_PRINTLN("======================");
 
 				DEBUG_PRINTLN("done!");
+
+				// Set the data offset
+				dataFile.seek(header.dataOffset());
 
 				sequenceDelay = header.stepTime();
 			}
