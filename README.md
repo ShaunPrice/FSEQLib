@@ -5,6 +5,8 @@ Xlights FSEQ Header Library
 	Contact:   Via Github
 	Copyright: Copyright (C) 2018 Shaun Price
 
+![Xlights FSEQ Example](images/FSEQLib.png)
+
 License
 -------
 This program is free software: you can redistribute it and/or modify
