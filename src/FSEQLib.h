@@ -5,8 +5,7 @@
  Contact:	Via Github website below
  Copyright (C) 2018 Shaun Price
  Website:	https://github.com/ShaunPrice/FSEQLib
-
- Version 1.0.1
+ Version 	1.0.2
 
  This program is free software: you can redistribute it and/or modify
  it under the terms of the GNU General Public License as published by
@@ -20,34 +19,25 @@
 
  You should have received a copy of the GNU General Public License
  along with this program.  If not, see <https://www.gnu.org/licenses/>.
-
 */
-#define FSEQ_VERSION "1.0.1"
+#define FSEQ_VERSION "1.0.2"
 
 #ifndef _FSEQLib_h
 #define _FSEQLib_h
 
-#if !defined(ARDUINO)
-#if __has_include("stdafx.h")
-#include "stdafx.h"
-#endif
-#include "stdint.h"
+#if defined(ARDUINO) && ARDUINO >= 100
+#include "arduino.h"
+#elif defined(ARDUINO) && ARDUINO < 100
+#include "WProgram.h"
+#else
 #include <string>
-
 #define String std::string
 #endif
 
-#if defined(ARDUINO) && ARDUINO >= 100
-	#include "arduino.h"
-#else
-	#include "WProgram.h"
 #endif
 
-
-#endif
-
-//#pragma pack(push, 1)
-typedef struct headerData_t
+#pragma pack(push, 1)
+typedef struct _headerData_t
 {
 	char	  magic[4];	// Should be "PSEQ"
 	uint16_t  dataOffset;
@@ -63,15 +53,15 @@ typedef struct headerData_t
 	uint16_t  sizeofUniverse;
 	uint8_t   gamma;
 	uint8_t   lightType;
-};
-//#pragma pop() 
+} headerData_t;
+#pragma pop() 
 
 
-typedef union HeaderData
+typedef union _HeaderData
 {
 	headerData_t headerData;
 	char rawData[28];	    // Xlights FSEQ Header
-};
+} HeaderData;
 
 class FSEQLib
 {

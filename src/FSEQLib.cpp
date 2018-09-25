@@ -1,12 +1,12 @@
 /*
 Name:		FSEQLib.cpp
 Created:	9/18/2018 5:04:31 PM
-Author:	Shaun Price
+Author:		Shaun Price
 Contact:	Via Github website below
 Copyright (C) 2018 Shaun Price
 Website:	https://github.com/ShaunPrice/FSEQLib
 
-Version 1.0.1
+Version 1.0.2
 
 This program is free software: you can redistribute it and/or modify
 it under the terms of the GNU General Public License as published by
