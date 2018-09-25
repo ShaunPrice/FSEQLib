@@ -54,7 +54,7 @@ Firstly, check that you SPI pin's used to read teh data from the SD card are cor
 
 The SD Card SPI PINS on the Wemos D1R2 mini (ESP8266) card are as follows:
 
-	SCLK = D1/GPIO 5
+	SCLK = D5/GPIO 5
 	MISO = D6/GPIO 12
 	MOSI = D7/GPIO 13
 	SS   = D8/GPIO 15 
