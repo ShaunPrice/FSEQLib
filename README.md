@@ -7,9 +7,10 @@ Xlights FSEQ Header Library
 
 ![Xlights FSEQ Example](images/FSEQLib.png)
 
-##Versions##
-1.0.0 - 24 Sep 2018 - Initial release.
-1.0.1 - 24 Sep 2018 - Updated header and example to add ESP8266 support 
+Versions
+--------
+- 1.0.0 - 24 Sep 2018 - Initial release.
+- 1.0.1 - 24 Sep 2018 - Updated header and example to add ESP8266 support 
 
 License
 -------
