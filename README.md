@@ -5,12 +5,14 @@ Xlights FSEQ Header Library
 	Contact:   Via Github
 	Copyright: Copyright (C) 2018 Shaun Price
 
+Note that the full documentation for this project is available on Hackser.io (https://www.hackster.io/ShaunPrice/xlights-fseq-sequence-player).
+
 ![Xlights FSEQ Example](images/FSEQLib.png)
 
 Versions
 --------
 - 1.0.0 - 24 Sep 2018 - Initial release.
-- 1.0.1 - 24 Sep 2018 - Updated header and example to add ESP8266 support 
+- 1.0.1 - 25 Sep 2018 - Updated header and example to add ESP8266 support 
 - 1.0.2 - 25 Sep 2018 - Updated the header to work correctly with C++ Windows Console application.
 
 License
