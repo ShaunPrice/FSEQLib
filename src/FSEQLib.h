@@ -6,6 +6,7 @@
  Copyright (C) 2018 Shaun Price
  Website:	https://github.com/ShaunPrice/FSEQLib
 
+ Version 1.0.1
 
  This program is free software: you can redistribute it and/or modify
  it under the terms of the GNU General Public License as published by
@@ -21,16 +22,15 @@
  along with this program.  If not, see <https://www.gnu.org/licenses/>.
 
 */
+#define FSEQ_VERSION "1.0.1"
 
 #ifndef _FSEQLib_h
 #define _FSEQLib_h
 
+#if !defined(ARDUINO)
 #if __has_include("stdafx.h")
 #include "stdafx.h"
 #endif
-
-
-#if !defined(ARDUINO)
 #include "stdint.h"
 #include <string>
 

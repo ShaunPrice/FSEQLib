@@ -6,6 +6,7 @@ Contact:	Via Github website below
 Copyright (C) 2018 Shaun Price
 Website:	https://github.com/ShaunPrice/FSEQLib
 
+Version 1.0.1
 
 This program is free software: you can redistribute it and/or modify
 it under the terms of the GNU General Public License as published by
@@ -28,15 +29,15 @@ SCLK = 18, MISO = 19, MOSI = 23, SS = 5
 
 */
 
-//#include <Adafruit_NeoPixel.h>
-
-#include <FastLED.h>
+#if !defined ESP8266
 #include <FS.h>
+#endif
+#include <FastLED.h>
 #include <SD.h>
 #include <SPI.h>
 #include "FSEQLib.h"
 
-#define DEBUG 1 // 0=OFF, 1=Serial
+#define DEBUG 0 // 0=OFF, 1=Serial
 
 // Serial Debug Info
 #if (DEBUG == 1)
@@ -50,12 +51,21 @@ SCLK = 18, MISO = 19, MOSI = 23, SS = 5
 #endif
 
 
-#define DATA_PIN_1 13	// Data pin for universe 1.
+#if defined ESP8266
+#define DATA_PIN_1 D1			// Data pin for universe 1.
+#define CARD_DETECT_PIN  D2		// May require 10k pull-up
+#elif defined ESP32
+#define DATA_PIN_1 13			// Data pin for universe 1.
+#define CARD_DETECT_PIN  17		// May require 10k pull-up
+#else
+#define DATA_PIN_1 13			// Data pin for universe 1.
+#define CARD_DETECT_PIN  17		// May require 10k pull-up
+#endif
+
 // This is where the second universe would go if using more than one universe
 //#define DATA_PIN_2 13	// Data pin for universe 2.
 
 #define FSEQ_FILE "/show.dat"	// Name of the FSEQ file to play
-#define CARD_DETECT_PIN  17		// May require 10k pull-up
 #define UNIVERSES 1				// Universes aren't really defined here but I use the term to define the 
 								//  number of times I want to split up the sequence step channels into.
 #define NUM_NODES 240			// Nodes/Pixels
@@ -163,7 +173,9 @@ void loop()
 		DEBUG_PRINTLN("Card removed");
 		cardInitialised = false;
 		dataFile.close();
+		#if !defined ESP8266
 		SD.end();
+		#endif
 	}
 	else if (cardDetected && cardInitialised)
 	{
@@ -175,7 +187,9 @@ void loop()
 			DEBUG_PRINTLN("Buffer Failed to load. Closing File and SD card");
 			cardInitialised = false;
 			dataFile.close();
+			#if !defined ESP8266
 			SD.end();
+			#endif
 		}
 		else
 		{
