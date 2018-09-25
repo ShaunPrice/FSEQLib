@@ -49,11 +49,11 @@ For more info, see https://www.arduino.cc/en/Guide/Libraries
 ##Using##
 You're going to need a couple of things to get started as follows:
 
-1 x ESP32 or an ESP8266 board. I used the Wemos Lolin32 Lite (ESP32) and a Wemos D1 R2 mini (ESP8266) but Arduino compatible boards will work as long as they are fast enough.
-1 x microSD card reader. I've tested is with the [Adafruit MicroSD card breakout board] (https://www.adafruit.com/product/254) and the [Polulu Breakout Board for MicroSD Card](https://www.pololu.com/product/2597).
-1 x microSD card
-1 x LED light strip. The example uses a strip of WS2811/WS2812's but the Xlights FSEQ file jus supplies the colour values and is not specific to any lights.
-1 x FSEQ file. The open source and free [Xlights](https://xlights.org/) program generates these files when it sateves sequences. The standard Arduino file does not support long filenames so you'll need to rename it into the 8.3 format. As an example, I renamed my file from single.fseq to  show.dat.
+-1 x ESP32 or an ESP8266 board. I used the Wemos Lolin32 Lite (ESP32) and a Wemos D1 R2 mini (ESP8266) but Arduino compatible boards will work as long as they are fast enough.
+-1 x microSD card reader. I've tested is with the [Adafruit MicroSD card breakout board] (https://www.adafruit.com/product/254) and the [Polulu Breakout Board for MicroSD Card](https://www.pololu.com/product/2597).
+-1 x microSD card
+-1 x LED light strip. The example uses a strip of WS2811/WS2812's but the Xlights FSEQ file jus supplies the colour values and is not specific to any lights.
+-1 x FSEQ file. The open source and free [Xlights](https://xlights.org/) program generates these files when it sateves sequences. The standard Arduino file does not support long filenames so you'll need to rename it into the 8.3 format. As an example, I renamed my file from single.fseq to  show.dat.
 
 Firstly, check that you SPI pin's used to read the data from the SD card are correct.
 
