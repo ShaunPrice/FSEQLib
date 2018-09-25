@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 #Xlights FSEQ Header Library#
 
 **Name:**	FSEQLib.cpp
@@ -11,6 +12,20 @@
 
 ##License##
 *This program is free software: you can redistribute it and/or modify
+=======
+Xlights FSEQ Header Library
+===========================
+	Name:      FSEQLib.cpp
+	Author:    Shaun Price
+	Contact:   Via Github
+	Copyright: Copyright (C) 2018 Shaun Price
+
+![Xlights FSEQ Example](images/FSEQLib.png)
+
+License
+-------
+This program is free software: you can redistribute it and/or modify
+>>>>>>> origin/master
 it under the terms of the GNU General Public License as published by
 the Free Software Foundation, either version 3 of the License, or
 (at your option) any later version.
