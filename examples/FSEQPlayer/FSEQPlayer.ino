@@ -6,7 +6,7 @@ Contact:	Via Github website below
 Copyright (C) 2018 Shaun Price
 Website:	https://github.com/ShaunPrice/FSEQLib
 
-Version 1.0.1
+Version 1.0.2
 
 This program is free software: you can redistribute it and/or modify
 it under the terms of the GNU General Public License as published by
@@ -24,8 +24,18 @@ along with this program.  If not, see <https://www.gnu.org/licenses/>.
 */
 /*
 SD Card VSPI PINS (ESP32 - Wemos Lolin32 Lite)
-========================================
-SCLK = 18, MISO = 19, MOSI = 23, SS = 5
+==============================================
+SCLK = 18
+MISO = 19
+MOSI = 23
+SS = 5
+
+SD Card SPI PINS (ESP8266 - Wemos D1 R2 mini)
+==============================================
+SCLK = D5/GPIO 5
+MISO = D6/GPIO 12
+MOSI = D7/GPIO 13
+SS   = D8/GPIO 15 
 
 */
 
