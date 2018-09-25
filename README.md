@@ -11,6 +11,7 @@ Versions
 --------
 - 1.0.0 - 24 Sep 2018 - Initial release.
 - 1.0.1 - 24 Sep 2018 - Updated header and example to add ESP8266 support 
+- 1.0.2 - 25 Sep 2018 - Updated the header to work correctly with C++ Windows Console application.
 
 License
 -------
