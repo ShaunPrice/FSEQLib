@@ -5,7 +5,7 @@ Xlights FSEQ Header Library
 	Contact:   Via Github
 	Copyright: Copyright (C) 2018 Shaun Price
 
-Note that the full documentation for this project is available on Hackser.io (https://www.hackster.io/ShaunPrice/xlights-fseq-sequence-player).
+The full documentation for this project is available on Hackser.io (https://www.hackster.io/ShaunPrice/xlights-fseq-sequence-player).
 
 ![Xlights FSEQ Example](images/FSEQLib.png)
 
