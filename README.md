@@ -62,7 +62,7 @@ If you're using the card detect pin you'll also need to define it. You may need 
 
 Check that you have the correct number of nodes/pixels per strip defined and if you're using universes in hte example make sure they're also defined. The example uses only one universe (output) but can be configured to use more.
 
-Finally, you'll also need to tell the [FastLED](http://fastled.io/), [Adafruit Neopixel](https://github.com/adafruit/Adafruit_NeoPixel) or other library which pin you're using and how many LED's/Nodes/Pixels are on that pin. I've used both teh FastLED, Adafruit and sent the data via a second SPI interface to an FPGA. The example uses the FastLED libraries.
+Finally, you'll also need to tell the [FastLED](http://fastled.io/), [Adafruit Neopixel](https://github.com/adafruit/Adafruit_NeoPixel) or other library which pin you're using and how many LED's/Nodes/Pixels are on that pin. I've used both the FastLED, Adafruit and sent the data via a second SPI interface to an FPGA. The example uses the FastLED libraries.
 
 Xlights
 -------
