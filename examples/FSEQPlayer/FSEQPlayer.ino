@@ -6,7 +6,7 @@ Contact:	Via Github website below
 Copyright (C) 2018 Shaun Price
 Website:	https://github.com/ShaunPrice/FSEQLib
 
-Version 1.0.2
+Version 1.0.3
 
 This program is free software: you can redistribute it and/or modify
 it under the terms of the GNU General Public License as published by
@@ -82,6 +82,10 @@ SS   = D8/GPIO 15
 #define NUM_CHANNELS_PER_NODE 3 // Number of channels/LEDs per Node/Pixel
 #define LEDS_PER_UNIVERSE NUM_NODES * NUM_CHANNELS_PER_NODE	// LEDs/channels per universe
 #define BUFFER_LENGTH (UNIVERSES * LEDS_PER_UNIVERSE) + ((4 - (UNIVERSES * LEDS_PER_UNIVERSE) % 4) % 4) // Buffer is 32 bit (4 byte) padded.
+// Adjust the brightness of the display
+// For best results leave brightness at 255 (100%)
+// and correct the brightness with Xlights.
+#define BRIGHTNESS 255
 
 size_t bytesRead = 0;
 File dataFile;
@@ -110,6 +114,11 @@ void setup()
 	FastLED.addLeds<NEOPIXEL, DATA_PIN_1>(leds[0], NUM_NODES);
 	// The second universe would be:
 	//FastLED.addLeds<NEOPIXEL, DATA_PIN_2>(leds[1], NUM_NODES);
+
+	// Adjust the brightness of the display
+	// For best results leave brightness at 255 (100%)
+	// and correct the brightness with Xlights.
+	FastLED.setBrightness(BRIGHTNESS);
 }
 
 void loop()
