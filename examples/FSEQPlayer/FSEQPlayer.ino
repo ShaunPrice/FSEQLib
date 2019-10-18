@@ -73,7 +73,7 @@ SS   = D8/GPIO 15
 #endif
 
 // This is where the second universe would go if using more than one universe
-//#define DATA_PIN_2 14	// Data pin for universe 2.  //Was using pin 13 for both. 
+//#define DATA_PIN_2 14	// Data pin for universe 2. 
 
 #define FSEQ_FILE "/show.dat"	// Name of the FSEQ file to play
 #define UNIVERSES 1				// Universes aren't really defined here but I use the term to define the 
