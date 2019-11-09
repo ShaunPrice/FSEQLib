@@ -1,12 +1,12 @@
 /*
-Name:		FSEQLib.cpp
-Created:	9/18/2018 5:04:31 PM
+Name:       FSeqTest.ino
+Created:	10/11/2019 12:21 AM
 Author:	Shaun Price
 Contact:	Via Github website below
 Copyright (C) 2018 Shaun Price
 Website:	https://github.com/ShaunPrice/FSEQLib
 
-Version 1.0.3
+Version 1.1.1
 
 This program is free software: you can redistribute it and/or modify
 it under the terms of the GNU General Public License as published by
@@ -35,17 +35,14 @@ SD Card SPI PINS (ESP8266 - Wemos D1 R2 mini)
 SCLK = D5/GPIO 5
 MISO = D6/GPIO 12
 MOSI = D7/GPIO 13
-SS   = D8/GPIO 15 
+SS   = D8/GPIO 15
 
 */
-
-#if !defined ESP8266
-#include <FS.h>
-#endif
 #include <FastLED.h>
-#include <SD.h>
-#include <SPI.h>
+#include <SdFat.h>
 #include "FSEQLib.h"
+
+//using namespace sdfat;
 
 #define DEBUG 0 // 0=OFF, 1=Serial
 
@@ -88,6 +85,9 @@ SS   = D8/GPIO 15
 #define BRIGHTNESS 255
 
 size_t bytesRead = 0;
+
+// SdFat
+SdFat SD;
 File dataFile;
 
 // SPI
@@ -110,7 +110,7 @@ void setup()
 
 	pinMode(SS, OUTPUT); // SD Card VSPI SS
 	pinMode(CARD_DETECT_PIN, INPUT_PULLUP); // SD Card Detected CD 
-	
+
 	FastLED.addLeds<NEOPIXEL, DATA_PIN_1>(leds[0], NUM_NODES);
 	// The second universe would be:
 	//FastLED.addLeds<NEOPIXEL, DATA_PIN_2>(leds[1], NUM_NODES);
@@ -150,14 +150,14 @@ void loop()
 				dataFile.readBytes(rawHeader.rawData, 28);
 
 				header = FSEQLib(rawHeader);
-				
+
 				// DEBUG code to print out the header details
 				DEBUG_PRINTLN("======================");
 				DEBUG_PRINTLN("== Xlights FSEQ Header");
 				DEBUG_PRINTLN("======================");
 				DEBUG_PRINTLN("Magic: " + header.magic());
 				DEBUG_PRINTLN("Data Offset: " + String(header.dataOffset()));
-				DEBUG_PRINTLN("Version: " + String(header.majorVersion())+"."+String(header.minorVersion()));
+				DEBUG_PRINTLN("Version: " + String(header.majorVersion()) + "." + String(header.minorVersion()));
 				DEBUG_PRINTLN("Header Length: " + String(header.headerLength()));
 				DEBUG_PRINTLN("Channels per Step: " + String(header.channelsPerStep()));
 				DEBUG_PRINTLN("Number of Steps: " + String(header.stepLength()));
@@ -192,23 +192,23 @@ void loop()
 		DEBUG_PRINTLN("Card removed");
 		cardInitialised = false;
 		dataFile.close();
-		#if !defined ESP8266
+#if !defined ESP8266
 		SD.end();
-		#endif
+#endif
 	}
 	else if (cardDetected && cardInitialised)
 	{
 		// Read the channels for the next step
 		int datalen = dataFile.readBytes(stepBuffer, BUFFER_LENGTH);
-		
+
 		if (datalen != BUFFER_LENGTH)
 		{
 			DEBUG_PRINTLN("Buffer Failed to load. Closing File and SD card");
 			cardInitialised = false;
 			dataFile.close();
-			#if !defined ESP8266
+#if !defined ESP8266
 			SD.end();
-			#endif
+#endif
 		}
 		else
 		{
@@ -222,7 +222,7 @@ void loop()
 				// Send the data
 				FastLED.show();
 			}
-			
+
 			currentStep++;
 
 			// Reset to first step if we have gone past the last step
