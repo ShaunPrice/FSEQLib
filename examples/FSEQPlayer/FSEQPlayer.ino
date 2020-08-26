@@ -6,7 +6,7 @@ Contact:	Via Github website below
 Copyright (C) 2018 Shaun Price
 Website:	https://github.com/ShaunPrice/FSEQLib
 
-Version 1.0.3
+Version 1.0.4
 
 This program is free software: you can redistribute it and/or modify
 it under the terms of the GNU General Public License as published by
@@ -37,6 +37,7 @@ MISO = D6/GPIO 12
 MOSI = D7/GPIO 13
 SS   = D8/GPIO 15 
 
+Also note Card Detect (CD) and Data Pin defines.
 */
 
 #if !defined ESP8266
@@ -132,7 +133,7 @@ void loop()
 	{
 		DEBUG_PRINT("Initializing SD card...");
 
-		if (SD.begin())
+		if (SD.begin(SS))
 		{
 			DEBUG_PRINTLN("card initialized.");
 
