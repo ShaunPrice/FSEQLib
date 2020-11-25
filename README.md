@@ -13,6 +13,7 @@ Versions
 - 1.0.1 - 25 Sep 2018 - Updated the header and example to add ESP8266 support
 - 1.0.2 - 25 Sep 2018 - Updated the header to work correctly with C++ Windows Console application.
 - 1.1.1 - 10 Nov 2019 - Updated the example to work with the current versions of the ESP8266 libraries that merge the SD and FS libraries into the SdFat library.
+- 1.1.2 - 25 Nov 2020 - Updated the example to work with the current versions of the ESP8266 libraries. It apears that the SdFat changes for the ESP8266 reverted back. Also removed Wemo D1 Mini pin specific references to make them generic pin numbers.
 
 License
 -------

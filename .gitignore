@@ -303,3 +303,11 @@ $RECYCLE.BIN/
 
 # Folders
 images/additional/
+.vscode/arduino.json
+.vscode/c_cpp_properties.json
+examples/FSEQPlayer/__vm/.FSEQPlayer.vsarduino.h
+examples/FSEQPlayer/__vm/Compile.vmps.xml
+examples/FSEQPlayer/__vm/Configuration.Debug.vmps.xml
+examples/FSEQPlayer/__vm/Configuration.Release.vmps.xml
+examples/FSEQPlayer/FSEQPlayer.vcxproj
+examples/FSEQPlayer/FSEQPlayer.vcxproj.filters

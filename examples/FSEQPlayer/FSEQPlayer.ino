@@ -1,11 +1,12 @@
 /*
-Name:       FSeqTest.ino
-Created:	10/11/2019 12:21 AM
+Name:		FSEQLib.cpp
+Created:	9/18/2018 5:04:31 PM
 Author:	Shaun Price
 Contact:	Via Github website below
 Copyright (C) 2018 Shaun Price
 Website:	https://github.com/ShaunPrice/FSEQLib
-Version 1.1.1
+
+Version 1.1.2
 
 This program is free software: you can redistribute it and/or modify
 it under the terms of the GNU General Public License as published by
@@ -38,11 +39,19 @@ SS   = D8/GPIO 15
 
 Also note Card Detect (CD) and Data Pin defines.
 */
-#include <FastLED.h>
-#include <SdFat.h>
-#include "FSEQLib.h"
 
-//using namespace sdfat;
+//#ifdef ESP8266
+// ESP8266
+//#include <SdFat.h>
+//#else
+// ESP32 Headers
+#include <SPI.h>
+#include <FS.h>
+#include <SD.h>
+//#endif
+
+#include <FastLED.h>
+#include "FSEQLib.h"
 
 #define DEBUG 0 // 0=OFF, 1=Serial
 
@@ -58,13 +67,12 @@ Also note Card Detect (CD) and Data Pin defines.
 #endif
 
 
-#if defined ESP8266
-#define DATA_PIN_1 D1			// Data pin for universe 1.
-#define CARD_DETECT_PIN  D2		// May require 10k pull-up
-#elif defined ESP32
-#define DATA_PIN_1 13			// Data pin for universe 1.
-#define CARD_DETECT_PIN  17		// May require 10k pull-up
+#ifdef ESP8266
+// ESP8266
+#define DATA_PIN_1 5			// Data pin for universe 1.
+#define CARD_DETECT_PIN  4		// May require 10k pull-up
 #else
+// ESP32
 #define DATA_PIN_1 13			// Data pin for universe 1.
 #define CARD_DETECT_PIN  17		// May require 10k pull-up
 #endif
@@ -85,9 +93,6 @@ Also note Card Detect (CD) and Data Pin defines.
 #define BRIGHTNESS 255
 
 size_t bytesRead = 0;
-
-// SdFat
-SdFat SD;
 File dataFile;
 
 // SPI
@@ -192,9 +197,9 @@ void loop()
 		DEBUG_PRINTLN("Card removed");
 		cardInitialised = false;
 		dataFile.close();
-#if !defined ESP8266
+		//#ifndef ESP8266
 		SD.end();
-#endif
+		//#endif
 	}
 	else if (cardDetected && cardInitialised)
 	{
@@ -206,9 +211,9 @@ void loop()
 			DEBUG_PRINTLN("Buffer Failed to load. Closing File and SD card");
 			cardInitialised = false;
 			dataFile.close();
-#if !defined ESP8266
+			//#ifndef ESP8266
 			SD.end();
-#endif
+			//#endif
 		}
 		else
 		{
