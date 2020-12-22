@@ -3,7 +3,7 @@ Xlights FSEQ Header Library
 	Name:      FSEQLib.cpp
 	Author:    Shaun Price
 	Contact:   Via Github
-	Copyright: Copyright (C) 2018 Shaun Price
+	Copyright: Copyright (C) 2018-2020 Shaun Price
 
 ![Xlights FSEQ Example](images/FSEQLib.png)
 
