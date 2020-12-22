@@ -3,10 +3,10 @@ Name:		FSEQLib.cpp
 Created:	9/18/2018 5:04:31 PM
 Author:	Shaun Price
 Contact:	Via Github website below
-Copyright (C) 2018 Shaun Price
+Copyright (C) 2018-2020 Shaun Price
 Website:	https://github.com/ShaunPrice/FSEQLib
 
-Version 1.1.2
+Version 2.0.0
 
 This program is free software: you can redistribute it and/or modify
 it under the terms of the GNU General Public License as published by
@@ -108,7 +108,6 @@ FSEQLib header;
 bool cardInitialised = false;
 bool cardDetected = false;
 
-
 void setup()
 {
 	SERIAL_BEGIN(115200);
@@ -157,22 +156,38 @@ void loop()
 				header = FSEQLib(rawHeader);
 
 				// DEBUG code to print out the header details
-				DEBUG_PRINTLN("======================");
-				DEBUG_PRINTLN("== Xlights FSEQ Header");
-				DEBUG_PRINTLN("======================");
-				DEBUG_PRINTLN("Magic: " + header.magic());
-				DEBUG_PRINTLN("Data Offset: " + String(header.dataOffset()));
-				DEBUG_PRINTLN("Version: " + String(header.majorVersion()) + "." + String(header.minorVersion()));
-				DEBUG_PRINTLN("Header Length: " + String(header.headerLength()));
-				DEBUG_PRINTLN("Channels per Step: " + String(header.channelsPerStep()));
-				DEBUG_PRINTLN("Number of Steps: " + String(header.stepLength()));
-				DEBUG_PRINTLN("Step Time (ms): " + String(header.stepTime()));
-				DEBUG_PRINTLN("Universes: " + String((header.universes() == 0) ? "N/A" : String(header.universes())));
-				DEBUG_PRINTLN("Size of Universe: " + String((header.sizeofUniverses() == 0) ? "N/A" : String(header.sizeofUniverses())));
-				DEBUG_PRINTLN("Gamma: " + String(header.gamma()));
-				DEBUG_PRINTLN("Light Type: " + String(header.lightType()));
-				DEBUG_PRINTLN("======================");
-
+				if (header.majorVersion() == 1)
+				{
+					DEBUG_PRINTLN( "======================");
+					DEBUG_PRINTLN( "== Xlights FSEQ V1.0 Header");
+					DEBUG_PRINTLN( "======================");
+					DEBUG_PRINTLN( "Magic: " + header.magic() + "");
+					DEBUG_PRINTLN( "Data Offset: " + header.dataOffset() + "");
+					DEBUG_PRINTLN( "Version: " + String(header.majorVersion()) + "." + String(header.minorVersion()) + "");
+					DEBUG_PRINTLN( "Header Length: " + String(header.headerLength()) + "");
+					DEBUG_PRINTLN( "Channels per Step: " + String(header.channelsPerStep()) + "");
+					DEBUG_PRINTLN( "Number of Steps: " + String(header.sequenseSteps()) + "");
+					DEBUG_PRINTLN( "Step Time (ms): " + String(header.stepTime()) + "");
+					DEBUG_PRINTLN( "Universes: " + String((header.universes() == 0) ? 0 : header.universes()) + "");
+					DEBUG_PRINTLN( "Size of Universe: " + String((header.sizeofUniverses() == 0) ? 0 : header.sizeofUniverses()) + "");
+					DEBUG_PRINTLN( "Gamma: " + String(header.gamma()) + "");
+					DEBUG_PRINTLN( "Color Order: " + header.colorOrder() + "");
+					DEBUG_PRINTLN( "======================");
+				}
+				else
+				{
+					DEBUG_PRINTLN( "Magic: " + header.magic() + "");
+					DEBUG_PRINTLN( "Data Offset: " + header.dataOffset() + "");
+					DEBUG_PRINTLN( "Version: " + String(header.majorVersion()) + "." + String(header.minorVersion()) + "");
+					DEBUG_PRINTLN( "Header Length: " + String(header.headerLength()) + "");
+					DEBUG_PRINTLN( "Channels per Step: " + String(header.channelsPerStep()) + "");
+					DEBUG_PRINTLN( "Number of Steps: " + String(header.sequenseSteps()) + "");
+					DEBUG_PRINTLN( "Step Time (ms): " + String(header.stepTime()) + "");					DEBUG_PRINTLN( "Compression Type: " + header.compressionTypeName() + "");
+					DEBUG_PRINTLN( "Compressed Blocks: " + String(header.compressedBlocks()) + "");
+					DEBUG_PRINTLN( "Sparse Ranges: " + String(header.sparseRanges()) + "");
+					DEBUG_PRINTLN( "UUID: " + String(header.uuid()) + "");
+					DEBUG_PRINTLN( "======================");
+				}
 				DEBUG_PRINTLN("done!");
 
 				// Set the data offset
