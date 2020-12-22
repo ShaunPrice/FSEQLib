@@ -47,7 +47,9 @@ You're going to need a couple of things to get started as follows:
 - 1 x microSD card reader. I've tested is with the [Adafruit MicroSD card breakout board] (https://www.adafruit.com/product/254) and the [Polulu Breakout Board for MicroSD Card](https://www.pololu.com/product/2597).
 - 1 x microSD card
 - 1 x LED light strip. The example uses a strip of WS2811/WS2812's but the Xlights FSEQ file jus supplies the colour values and is not specific to any lights.
-- 1 x FSEQ file. The open source and free [Xlights](https://xlights.org/) program generates these files when it saves sequences. The standard Arduino file does not support long filenames so you'll need to rename it into the 8.3 format. As an example, I renamed my file from single.fseq to  show.dat.
+- 1 x FSEQ file. The open source and free [Xlights](https://xlights.org/) program generates these files when it saves sequences. The standard Arduino file does not support long filenames so you'll need to rename it into the 8.3 format. As an example, I renamed my file from single.fseq to  show.dat. Also note that this version only supports FSEQ version 1.0 format files. You can change the Xlights version settings for the sequences in [File][Preferences] on the Sequences tab as shown below. The Version-2.0.0 branch that will support version 2.0 files is in development for uncompressed version 2.0 FSEQ files only at this stage.
+
+![Xlights Sequence File Version](images/FSEQ-Version-Number.png)
 
 Firstly, check that you SPI pin's used to read teh data from the SD card are correct. The SD Card VSPI PINS on the Wemos Lolin32 Lite (ESP32) card are as follows:
 
