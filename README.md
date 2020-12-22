@@ -14,6 +14,7 @@ Versions
 - 1.0.2 - 25 Sep 2018 - Updated the header to work correctly with C++ Windows Console application.
 - 1.1.1 - 10 Nov 2019 - Updated the example to work with the current versions of the ESP8266 libraries that merge the SD and FS libraries into the SdFat library.
 - 1.1.2 - 25 Nov 2020 - Updated the example to work with the current versions of the ESP8266 libraries. It apears that the SdFat changes for the ESP8266 reverted back. Also removed Wemo D1 Mini pin specific references to make them generic pin numbers.
+- 2.0.0 - In development - Adding version 2.0 FSEQ file format.
 
 License
 -------
@@ -83,6 +84,13 @@ I recomend:
 2. Adafruit's The Magic of NeoPixels (https://learn.adafruit.com/adafruit-neopixel-uberguide/the-magic-of-neopixels)
 3. Xlights/Nutcracker Wiki (http://www.nutcracker123.com/wk/index.php?title=Main_Page)
 4. Youtube (https://www.youtube.com)
+
+# Recognition
+This project would note be possible without information on the FSEQ file format gained from the following GitHub projects:
+
+[Falcon Christmas](https://github.com/FalconChristmas/fpp) https://github.com/FalconChristmas/fpp
+
+[xLights Project](https://github.com/smeighan/xLights) https://github.com/smeighan/xLights
 
 Notes
 -----
