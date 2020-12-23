@@ -40,7 +40,7 @@ FSEQLib::FSEQLib(HeaderData header)
 // Magic number (PSEQ) for FSEQ files.
 String FSEQLib::magic()
 {
-	char l_buffMagic[5] = { 0,0,0,0,0 };
+	char l_buffMagic[5] = {0};
 
 	memcpy(&l_buffMagic[0], &_header.headerData.magic[0], 4);
 #if !defined(ARDUINO)
