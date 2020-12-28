@@ -32,7 +32,7 @@ SS = 5
 
 SD Card SPI PINS (ESP8266 - Wemos D1 R2 mini)
 ==============================================
-SCLK = D5/GPIO 5
+SCLK = D5/GPIO 14
 MISO = D6/GPIO 12
 MOSI = D7/GPIO 13
 SS   = D8/GPIO 15
@@ -40,18 +40,15 @@ SS   = D8/GPIO 15
 Also note Card Detect (CD) and Data Pin defines.
 */
 
-//#ifdef ESP8266
-// ESP8266
-//#include <SdFat.h>
-//#else
-// ESP32 Headers
+#ifdef ESP8266
+#include <SDFSFormatter.h>
+#include <SDFS.h>
+#endif
 #include <SPI.h>
-#include <FS.h>
 #include <SD.h>
-//#endif
-
 #include <FastLED.h>
 #include "FSEQLib.h"
+
 
 #define DEBUG 0 // 0=OFF, 1=Serial
 
@@ -66,11 +63,10 @@ Also note Card Detect (CD) and Data Pin defines.
 #define DEBUG_PRINTLN
 #endif
 
-
 #ifdef ESP8266
 // ESP8266
-#define DATA_PIN_1 5			// Data pin for universe 1.
-#define CARD_DETECT_PIN  4		// May require 10k pull-up
+#define DATA_PIN_1 4			// Data pin for universe 1. // D2 - Wemos D1 R2 mini
+#define CARD_DETECT_PIN  0		// May require 10k pull-up  // D3 - Wemos D1 R2 mini
 #else
 // ESP32
 #define DATA_PIN_1 13			// Data pin for universe 1.
@@ -83,7 +79,7 @@ Also note Card Detect (CD) and Data Pin defines.
 #define FSEQ_FILE "/show.dat"	// Name of the FSEQ file to play
 #define UNIVERSES 1				// Universes aren't really defined here but I use the term to define the 
 								//  number of times I want to split up the sequence step channels into.
-#define NUM_NODES 240			// Nodes/Pixels
+#define NUM_NODES 150			// Nodes/Pixels
 #define NUM_CHANNELS_PER_NODE 3 // Number of channels/LEDs per Node/Pixel
 #define LEDS_PER_UNIVERSE NUM_NODES * NUM_CHANNELS_PER_NODE	// LEDs/channels per universe
 #define BUFFER_LENGTH (UNIVERSES * LEDS_PER_UNIVERSE) + ((4 - (UNIVERSES * LEDS_PER_UNIVERSE) % 4) % 4) // Buffer is 32 bit (4 byte) padded.
@@ -93,6 +89,7 @@ Also note Card Detect (CD) and Data Pin defines.
 #define BRIGHTNESS 255
 
 size_t bytesRead = 0;
+
 File dataFile;
 
 // SPI
@@ -134,7 +131,8 @@ void loop()
 	// See if the card is present and can be initialized:
 	if (cardDetected && !cardInitialised)
 	{
-		DEBUG_PRINT("Initializing SD card...");
+		DEBUG_PRINTLN("Initializing SD card...");
+		//SDFS.setConfig(SDFSConfig(SS));
 
 		if (SD.begin(SS))
 		{
@@ -145,14 +143,15 @@ void loop()
 			// so you have to close this one before opening another.
 			// Also, this only supports 8.3 format so we need to 
 			// rename the file from xxx.fseq to something else.
-			dataFile = SD.open(FSEQ_FILE);
+			dataFile = SD.open(FSEQ_FILE, "r");
+
 			DEBUG_PRINTLN("File size: " + String(dataFile.size()));
+			
 			if (dataFile.size() > 0)
 			{
 				cardInitialised = true;
-
+				
 				dataFile.readBytes(rawHeader.rawData, 28);
-
 				header = FSEQLib(rawHeader);
 
 				// DEBUG code to print out the header details
@@ -161,38 +160,40 @@ void loop()
 					DEBUG_PRINTLN( "======================");
 					DEBUG_PRINTLN( "== Xlights FSEQ V1.0 Header");
 					DEBUG_PRINTLN( "======================");
-					DEBUG_PRINTLN( "Magic: " + header.magic() + "");
-					DEBUG_PRINTLN( "Data Offset: " + header.dataOffset() + "");
-					DEBUG_PRINTLN( "Version: " + String(header.majorVersion()) + "." + String(header.minorVersion()) + "");
-					DEBUG_PRINTLN( "Header Length: " + String(header.headerLength()) + "");
-					DEBUG_PRINTLN( "Channels per Step: " + String(header.channelsPerStep()) + "");
-					DEBUG_PRINTLN( "Number of Steps: " + String(header.sequenseSteps()) + "");
-					DEBUG_PRINTLN( "Step Time (ms): " + String(header.stepTime()) + "");
-					DEBUG_PRINTLN( "Universes: " + String((header.universes() == 0) ? 0 : header.universes()) + "");
-					DEBUG_PRINTLN( "Size of Universe: " + String((header.sizeofUniverses() == 0) ? 0 : header.sizeofUniverses()) + "");
-					DEBUG_PRINTLN( "Gamma: " + String(header.gamma()) + "");
-					DEBUG_PRINTLN( "Color Order: " + header.colorOrder() + "");
+					DEBUG_PRINTLN( "Magic: " + String(header.magic()));
+					DEBUG_PRINTLN( "Data Offset: " + String(header.dataOffset()));
+					DEBUG_PRINTLN( "Version: " + String(header.majorVersion()) + "." + String(header.minorVersion()));
+					DEBUG_PRINTLN( "Header Length: " + String(header.headerLength()));
+					DEBUG_PRINTLN( "Channels per Step: " + String(header.channelsPerStep()));
+					DEBUG_PRINTLN( "Number of Steps: " + String(header.sequenseSteps()));
+					DEBUG_PRINTLN( "Step Time (ms): " + String(header.stepTime()));
+					DEBUG_PRINTLN( "Universes: " + String((header.universes() == 0) ? 0 : header.universes()));
+					DEBUG_PRINTLN( "Size of Universe: " + String((header.sizeofUniverses() == 0) ? 0 : header.sizeofUniverses()));
+					DEBUG_PRINTLN( "Gamma: " + String(header.gamma()));
+					DEBUG_PRINTLN( "Color Order: " + header.colorOrder());
 					DEBUG_PRINTLN( "======================");
 				}
 				else
 				{
-					DEBUG_PRINTLN( "Magic: " + header.magic() + "");
-					DEBUG_PRINTLN( "Data Offset: " + header.dataOffset() + "");
-					DEBUG_PRINTLN( "Version: " + String(header.majorVersion()) + "." + String(header.minorVersion()) + "");
-					DEBUG_PRINTLN( "Header Length: " + String(header.headerLength()) + "");
-					DEBUG_PRINTLN( "Channels per Step: " + String(header.channelsPerStep()) + "");
-					DEBUG_PRINTLN( "Number of Steps: " + String(header.sequenseSteps()) + "");
-					DEBUG_PRINTLN( "Step Time (ms): " + String(header.stepTime()) + "");					DEBUG_PRINTLN( "Compression Type: " + header.compressionTypeName() + "");
-					DEBUG_PRINTLN( "Compressed Blocks: " + String(header.compressedBlocks()) + "");
-					DEBUG_PRINTLN( "Sparse Ranges: " + String(header.sparseRanges()) + "");
-					DEBUG_PRINTLN( "UUID: " + String(header.uuid()) + "");
+					DEBUG_PRINTLN("======================");
+					DEBUG_PRINTLN("== Xlights FSEQ V2.0 Header");
+					DEBUG_PRINTLN("======================");
+					DEBUG_PRINTLN( "Magic: " + header.magic());
+					DEBUG_PRINTLN( "Data Offset: " + String(header.dataOffset()));
+					DEBUG_PRINTLN( "Version: " + String(header.majorVersion()) + "." + String(header.minorVersion()));
+					DEBUG_PRINTLN( "Header Length: " + String(header.headerLength()));
+					DEBUG_PRINTLN( "Channels per Step: " + String(header.channelsPerStep()));
+					DEBUG_PRINTLN( "Number of Steps: " + String(header.sequenseSteps()));
+					DEBUG_PRINTLN( "Step Time (ms): " + String(header.stepTime()));					DEBUG_PRINTLN( "Compression Type: " + header.compressionTypeName());
+					DEBUG_PRINTLN( "Compressed Blocks: " + String(header.compressedBlocks()));
+					DEBUG_PRINTLN( "Sparse Ranges: " + String(header.sparseRanges()));
+					DEBUG_PRINTLN( "UUID: " + String((char)header.uuid()));
 					DEBUG_PRINTLN( "======================");
 				}
 				DEBUG_PRINTLN("done!");
 
 				// Set the data offset
 				dataFile.seek(header.dataOffset());
-
 				sequenceDelay = header.stepTime();
 			}
 			else
@@ -212,9 +213,6 @@ void loop()
 		DEBUG_PRINTLN("Card removed");
 		cardInitialised = false;
 		dataFile.close();
-		//#ifndef ESP8266
-		SD.end();
-		//#endif
 	}
 	else if (cardDetected && cardInitialised)
 	{
@@ -226,9 +224,6 @@ void loop()
 			DEBUG_PRINTLN("Buffer Failed to load. Closing File and SD card");
 			cardInitialised = false;
 			dataFile.close();
-			//#ifndef ESP8266
-			SD.end();
-			//#endif
 		}
 		else
 		{
@@ -246,7 +241,7 @@ void loop()
 			currentStep++;
 
 			// Reset to first step if we have gone past the last step
-			if (currentStep == header.stepLength())
+			if (currentStep == header.sizeofUniverses())
 			{
 				// Restart at first step
 				currentStep = 0;
