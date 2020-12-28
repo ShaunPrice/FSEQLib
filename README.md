@@ -13,8 +13,8 @@ Versions
 - 1.0.1 - 25 Sep 2018 - Updated the header and example to add ESP8266 support
 - 1.0.2 - 25 Sep 2018 - Updated the header to work correctly with C++ Windows Console application.
 - 1.1.1 - 10 Nov 2019 - Updated the example to work with the current versions of the ESP8266 libraries that merge the SD and FS libraries into the SdFat library.
-- 1.1.2 - 25 Nov 2020 - Updated the example to work with the current versions of the ESP8266 libraries. It apears that the SdFat changes for the ESP8266 reverted back. Also removed Wemo D1 Mini pin specific references to make them generic pin numbers.
-- 2.0.0 - In development in the Version-2.0.0 branch - Adding version 2.0 FSEQ file format.
+- 1.1.2 - 25 Nov 2020 - Updated the example to work with the current versions of the ESP8266 libraries. It apears that the SdFat changes for the ESP8266 reverted back. 
+- 2.0.0 - 28 Dec 2020 - Version 2.0.0 alpha releasre that included the FSEQ 2.0 file format.
 
 License
 -------
@@ -47,7 +47,7 @@ You're going to need a couple of things to get started as follows:
 - 1 x microSD card reader. I've tested is with the [Adafruit MicroSD card breakout board] (https://www.adafruit.com/product/254) and the [Polulu Breakout Board for MicroSD Card](https://www.pololu.com/product/2597).
 - 1 x microSD card
 - 1 x LED light strip. The example uses a strip of WS2811/WS2812's but the Xlights FSEQ file jus supplies the colour values and is not specific to any lights.
-- 1 x FSEQ file. The open source and free [Xlights](https://xlights.org/) program generates these files when it saves sequences. The standard Arduino file does not support long filenames so you'll need to rename it into the 8.3 format. As an example, I renamed my file from single.fseq to  show.dat. Also note that this version only supports FSEQ version 1.0 format files. You can change the Xlights version settings for the sequences in [File][Preferences] on the Sequences tab as shown below. The Version-2.0.0 branch that will support version 2.0 files is in development for uncompressed version 2.0 FSEQ files only at this stage.
+- 1 x FSEQ file. The open source and free [Xlights](https://xlights.org/) program generates these files when it saves sequences. The standard Arduino file does not support long filenames so you'll need to rename it into the 8.3 format. As an example, I renamed my file from single.fseq to  show.dat. Also note that if you wish to play the FSEQ as in the example project you'll either need to ssave the FSEQ file in uncompressed format (V1 or V2 Uncompressed) or implement the decompression function in your code. The version settings for the sequences are set in [File][Preferences] on the Sequences tab as shown below.
 
 ![Xlights Sequence File Version](images/FSEQ-Version-Number.png)
 
