@@ -14,7 +14,7 @@ Versions
 - 1.0.2 - 25 Sep 2018 - Updated the header to work correctly with C++ Windows Console application.
 - 1.1.1 - 10 Nov 2019 - Updated the example to work with the current versions of the ESP8266 libraries that merge the SD and FS libraries into the SdFat library.
 - 1.1.2 - 25 Nov 2020 - Updated the example to work with the current versions of the ESP8266 libraries. It apears that the SdFat changes for the ESP8266 reverted back. 
-- 2.0.0 - 28 Dec 2020 - Version 2.0.0 alpha releasre that included the FSEQ 2.0 file format.
+- 2.0.0 - 28 Dec 2020 - Version 2.0.0 release that includes the FSEQ 2.0 file format.
 
 License
 -------
@@ -51,7 +51,7 @@ You're going to need a couple of things to get started as follows:
 
 ![Xlights Sequence File Version](images/FSEQ-Version-Number.png)
 
-Firstly, check that you SPI pin's used to read teh data from the SD card are correct. The SD Card VSPI PINS on the Wemos Lolin32 Lite (ESP32) card are as follows:
+Firstly, check that you SPI pin's used to read the data from the SD card are correct. The SD Card VSPI PINS on the Wemos Lolin32 Lite (ESP32) card are as follows:
 
 	SCLK = 18
 	MISO = 19
@@ -60,7 +60,7 @@ Firstly, check that you SPI pin's used to read teh data from the SD card are cor
 
 The SD Card SPI PINS on the Wemos D1R2 mini (ESP8266) card are as follows:
 
-	SCLK = D5/GPIO 5
+	SCLK = D5/GPIO 14
 	MISO = D6/GPIO 12
 	MOSI = D7/GPIO 13
 	SS   = D8/GPIO 15 
