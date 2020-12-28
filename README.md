@@ -14,7 +14,7 @@ Versions
 - 1.0.2 - 25 Sep 2018 - Updated the header to work correctly with C++ Windows Console application.
 - 1.1.1 - 10 Nov 2019 - Updated the example to work with the current versions of the ESP8266 libraries that merge the SD and FS libraries into the SdFat library.
 - 1.1.2 - 25 Nov 2020 - Updated the example to work with the current versions of the ESP8266 libraries. It apears that the SdFat changes for the ESP8266 reverted back. 
-- 2.0.0 - 23 Dec 2020 - Version 2.0.0 alpha releasre that included the FSEQ 2.0 file format.
+- 2.0.0 - 28 Dec 2020 - Version 2.0.0 alpha releasre that included the FSEQ 2.0 file format.
 
 Also removed Wemo D1 Mini pin specific references to make them generic pin numbers.
 

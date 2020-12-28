@@ -311,3 +311,5 @@ examples/FSEQPlayer/__vm/Configuration.Debug.vmps.xml
 examples/FSEQPlayer/__vm/Configuration.Release.vmps.xml
 examples/FSEQPlayer/FSEQPlayer.vcxproj
 examples/FSEQPlayer/FSEQPlayer.vcxproj.filters
+examples/FSEQPlayer/__vm/Upload.vmps.xml
+examples/FSEQPlayer/FSEQPlayer.sln
