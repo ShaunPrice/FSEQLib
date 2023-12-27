@@ -72,7 +72,7 @@ typedef struct _headerData_v2_0
 	uint8_t   compressedBlocks; // Number of compression blocks, 0 if uncompressed, lower 8 bits. Total 12 bits.
 	uint8_t   sparseRanges;		// Number of sparse ranges  = 0 
 	uint8_t   flags2;			// Flags (unused/reserved) = 0
-	uint64_t  uuid;				// 64bit unique identifier, likely a timestamp or UUID 
+	uint64_t  uuid;				// 64bit unique identifier (UUID) 
 } headerData_v2;
 #pragma pop() 
 
@@ -146,7 +146,7 @@ public:
 	uint8_t sparseRanges();
 
 	// V2 UUID
-	// Number of compression blocks, 0 if uncompressed, lower 8 bits. Total 12 bits.
+	// 64bit unique identifier (UUID)
 	uint64_t uuid();
 
 };
